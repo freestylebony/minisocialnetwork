@@ -3,7 +3,14 @@
 
 @section('content')
     <div class="container">
-   	  <div class="row">
+   	  <div class="row"> 
+
+         <div class="col-md-6 col-md-offset-3"> 
+            @foreach ($errors->all() as $error)
+               <p class="alert alert-danger">{{ $error }}</p>
+            @endforeach
+         </div>
+
    	  	 <div class="col-md-6 col-md-offset-3">
    	  	 	<div class="panel panel-default">
    	  	 		<div class="panel-heading">

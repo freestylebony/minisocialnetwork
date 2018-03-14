@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticlesFormRequest;
 
 class ArticlesController extends Controller
 {
@@ -35,7 +36,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticlesFormRequest $request)
     {
         // $article = new Article;
         // $article->user_id = Auth::user()->id;
