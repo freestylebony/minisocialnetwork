@@ -32,7 +32,7 @@
                         <form action="/myarticles/{{$article->id}}" method="POST" class="pull-left">
                            {{ csrf_field()}}
                            {{ method_field('DELETE')}}
-                           <button class="btn btn-danger btn-sm">
+                           <button class="btn btn-danger btn-sm" onclick=" return confirm('Are you sure you want to delete?');">
                               Delete
                            </button>
                         </form>
