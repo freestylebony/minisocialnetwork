@@ -45,7 +45,7 @@ class ArticlesController extends Controller
         // $article->save();
 
         Article::create($request->all());
-        return redirect('/articles');
+        return redirect('/articles')->with('status', 'Article created !');
     }
 
     /**
@@ -97,6 +97,6 @@ class ArticlesController extends Controller
         //$article = Article::findOrFail($id);
         //$article->delete();
         Article::destroy($id);
-        return redirect('/articles');
+        return redirect('/articles')->with('status', 'Article deleted ');
     }
 }

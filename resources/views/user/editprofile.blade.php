@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+             @foreach ($errors->all() as $error)
+                  <div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ $error }}
+                  </div>
+            @endforeach
+        </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Profile</div>
@@ -14,7 +22,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -42,7 +50,7 @@
                             <label for="name" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="dob" type="date" class="form-control" name="dob" value="{{ $user->dob->format('Y-m-d')}}" required autofocus>
+                                <input id="dob" type="date" class="form-control" name="dob" value="{{ $user->dob->format('Y-m-d')}}" autofocus>
 
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
@@ -56,7 +64,7 @@
                             <label for="name" class="col-md-4 control-label">Avatar</label>
 
                             <div class="col-md-6">
-                                <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" required autofocus>
+                                <input id="avatar" type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" autofocus>
 
                                 @if ($errors->has('avatar'))
                                     <span class="help-block">

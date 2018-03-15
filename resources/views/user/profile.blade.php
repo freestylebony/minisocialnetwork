@@ -4,6 +4,15 @@
 @section('content')
    <div class="container">
    	  <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              @if(session('status'))
+                  <div class="alert alert-success alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('status') }}
+                  </div>
+              @endif
+          </div>
+
    	  	 <div class="col-md-6 col-md-offset-3">
    	  	 	<div class="panel panel-default">
    	  	 		<div class="panel-body text-center">

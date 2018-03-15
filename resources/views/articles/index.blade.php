@@ -4,6 +4,15 @@
 @section('content')
     <div class="container">
       <div class="row">
+         <div class="col-md-6 col-md-offset-3"> 
+            @if(session('status'))
+                  <div class="alert alert-success alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('status') }}
+                  </div>
+            @endif
+         </div>
+
          @forelse($articles as $article)
               <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
@@ -23,7 +32,7 @@
                         <form action="/articles/{{$article->id}}" method="POST" class="pull-left">
                            {{ csrf_field()}}
                            {{ method_field('DELETE')}}
-                           <button class="btn btn-danger btn-sm">
+                           <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete the article?');">
                               Delete
                            </button>
                         </form>

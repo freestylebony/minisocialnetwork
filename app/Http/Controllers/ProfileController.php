@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UsersFormRequest;
 use App\User;
 
 class ProfileController extends Controller
@@ -26,7 +27,7 @@ class ProfileController extends Controller
     }
 
 
-    public function storeProfile($username, Request $request)
+    public function storeProfile($username, UsersFormRequest $request)
     {
     	$user = User::whereUsername($username)->first();
          $dob = $request->dob;
@@ -45,6 +46,6 @@ class ProfileController extends Controller
     	$user->avatar = $imageName;
 
     	$user->save();
-	    	return redirect('/profile/'.$username.'');
+	    	return redirect('/profile/'.$username.'')->with('status', 'Profile updated successfully');
     }
 }

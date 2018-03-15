@@ -30,10 +30,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                    <span class="pull-left"><i>Comment by {{$comment->user->name}}</i></span>
-                   <span class="pull-right"><b>{{$comment->user->created_at->diffForHumans()}}</b></span>
+                   <span class="pull-right"><b>{{$comment->created_at->diffForHumans()}}</b></span>
                 </div>
                 <div class="panel-body">
                    {{$comment->comment}}
+                     @if($comment->user->name == Auth::user()->name)
+                        <small><a href="">Delete</a></small>
+                     @endif
                 </div>
             </div>
             @empty

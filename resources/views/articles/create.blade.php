@@ -25,12 +25,12 @@
    	  	 		  	<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
    	  	 			<div class="form-group">
    	  	 				<label for="content">Content</label>
-   	  	 				<textarea class="form-control" name="content"></textarea>
+   	  	 				<textarea class="form-control" name="content">{{ old('content')}}</textarea>
    	  	 			</div>
 
    	  	 			<div class="form-group">
    	  	 				<label for="post_on">Post on</label>
-   	  	 				<input type="datetime-local" class="form-control" name="post_on">
+   	  	 				<input type="datetime-local" class="form-control" name="post_on" value="{{ old('post_on' )}}">
    	  	 			</div>
 
    	  	 			<input type="submit" class="btn btn-success pull-right" value="Submit">
