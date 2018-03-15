@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticlesFormRequest;
 use App\Article;
 class MyArticlesController extends Controller
 {
@@ -69,9 +70,11 @@ class MyArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticlesFormRequest $request, $id)
     {
-        //
+         $article = Article::findOrFail($id);
+         $article->update($request->all());
+         return redirect('/myarticles')->with('status', 'Article updated !');
     }
 
     /**
@@ -85,6 +88,6 @@ class MyArticlesController extends Controller
         //$article = Article::findOrFail($id);
         //$article->delete();
         Article::destroy($id);
-        return redirect('/myarticles');
+        return redirect('/myarticles')->with('status', 'Article deleted');
     }
 }

@@ -4,13 +4,21 @@
 @section('content')
     <div class="container">
    	  <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+                @foreach ($errors->all() as $error)
+                  <div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ $error }}
+                  </div>
+                @endforeach
+          </div>
    	  	 <div class="col-md-6 col-md-offset-3">
    	  	 	<div class="panel panel-default">
    	  	 		<div class="panel-heading">
    	  	 			Edit Article
    	  	 		</div>
    	  	 		<div class="panel-body">
-   	  	 		  <form method="POST" action="/articles/{{ $article->id }}">
+   	  	 		  <form method="POST" action="/myarticles/{{ $article->id }}">
                      {{ method_field('PUT') }}
    	  	 		  	   {{ csrf_field() }}
    	  	 		  	<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
