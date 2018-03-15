@@ -7,7 +7,10 @@
 
          <div class="col-md-6 col-md-offset-3"> 
             @foreach ($errors->all() as $error)
-               <p class="alert alert-danger">{{ $error }}</p>
+                  <div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ $error }}
+                  </div>
             @endforeach
          </div>
 
