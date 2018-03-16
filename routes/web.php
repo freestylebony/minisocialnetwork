@@ -18,13 +18,16 @@ Route::get('/', function () {
 Route::get('users', 'UsersController@index')->middleware('Authenticated');
 Route::get('users/create', 'UsersController@create')->middleware('Authenticated');
 Route::post('users', 'UsersController@store');
-Route::get('/profile/{username}', 'ProfileController@profile')->middleware('Authenticated');
-Route::get('/profile/{username}/edit', 'ProfileController@editprofile');
-Route::post('/profile/{username}', 'ProfileController@storeProfile');
-Route::resource('articles', 'ArticlesController');
-Route::resource('myarticles', 'MyArticlesController');
-Route::resource('comments', 'CommentsController');
 
+Route::group(['middleware' => 'Authenticated'], function(){
+
+    Route::get('/profile/{username}', 'ProfileController@profile');
+    Route::get('/profile/{username}/edit', 'ProfileController@editprofile');
+    Route::post('/profile/{username}', 'ProfileController@storeProfile');
+    Route::resource('articles', 'ArticlesController');
+    Route::resource('myarticles', 'MyArticlesController');
+    Route::resource('comments', 'CommentsController');
+});
    
 
 Auth::routes();
