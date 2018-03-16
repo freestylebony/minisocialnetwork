@@ -80,6 +80,7 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::destroy($id);
+        return back()->with('status', 'comment deleted');
     }
 }

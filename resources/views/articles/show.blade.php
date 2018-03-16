@@ -4,6 +4,15 @@
     <div class="container">
       <div class="row">
               <div class="col-md-6 col-md-offset-3">
+                 @if(session('status'))
+                  <div class="alert alert-success alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('status') }}
+                  </div>
+                 @endif
+              </div>
+
+              <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                    <div class="panel-heading">
                       <span>
@@ -34,8 +43,12 @@
                 </div>
                 <div class="panel-body">
                    {{$comment->comment}}
-                     @if($comment->user->name == Auth::user()->name)
-                        <small><a href="">Delete</a></small>
+                     @if($comment->user->name == Auth::user()->name || Auth::user()->name == $article->user->name)
+                      <form action="/comments/{{$comment->id}}" method="POST">
+                           {{ csrf_field()}}
+                           {{ method_field('DELETE')}}
+                        <small><button class="btn btn-xs btn btn-primary" onclick="return confirm('Are you sure you want to delete comment?');">Delete</button></small>
+                      </form>
                      @endif
                 </div>
             </div>
