@@ -35,7 +35,7 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         Comment::create($request->all());
-        return redirect('/articles');
+        return redirect('/articles')->with('status', 'Comment posted');
     }
 
     /**

@@ -42,12 +42,18 @@
                    <span class="pull-right"><b>{{$comment->created_at->diffForHumans()}}</b></span>
                 </div>
                 <div class="panel-body">
-                   {{$comment->comment}}
+                  <span>
+                   @if(!empty($comment->user->avatar))
+                    <img src="/images/{{ $comment->user->avatar}}" width="50" height="50" />
+                    @else
+                      <img src="/images/defaultavatar.jpg" width="50" height="50" />
+                    @endif
+                 </span> {{$comment->comment}}
                      @if($comment->user->name == Auth::user()->name || Auth::user()->name == $article->user->name)
                       <form action="/comments/{{$comment->id}}" method="POST">
                            {{ csrf_field()}}
                            {{ method_field('DELETE')}}
-                        <small><button class="btn btn-xs btn btn-primary" onclick="return confirm('Are you sure you want to delete comment?');">Delete</button></small>
+                        <small><button class="btn btn-xs btn btn-danger" onclick="return confirm('Are you sure you want to delete comment?');">Delete</button></small>
                       </form>
                      @endif
                 </div>
