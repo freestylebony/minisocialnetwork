@@ -62,6 +62,15 @@
               No comment yet
            @endforelse
         </div>
+        
+        <div class="col-md-6 col-md-offset-3">
+           @foreach ($errors->all() as $error)
+                  <div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ $error }}
+                  </div>
+            @endforeach
+        </div>
 
         <div class="col-md-6 col-md-offset-3">
           <div class="panel panel-default">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CommentsRequest;
 class CommentsController extends Controller
 {
     /**
@@ -32,7 +32,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentsRequest $request)
     {
         Comment::create($request->all());
         return redirect('/articles')->with('status', 'Comment posted');
